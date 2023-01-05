@@ -61,7 +61,7 @@ Resources:
       UserData:
         Fn::Base64: !Sub |
             <powershell>
-            $apassword = ConvertTo-SecureString "Believe33!" -AsPlainText -Force
+            $apassword = ConvertTo-SecureString "password1" -AsPlainText -Force
             $accountpassword = ConvertTo-SecureString "password1" -AsPlainText -Force
             Add-WindowsFeature AD-Domain-Services
             Install-ADDSForest -DomainName "lab1.example.com" -InstallDNS -SafeModeAdministratorPassword $apassword -Force
