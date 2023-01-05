@@ -1,0 +1,26 @@
+[
+    {
+      "ParameterKey": "VpcId",
+      "ParameterValue": "vpc-0545a571466791d40"
+    },
+    {
+        "ParameterKey": "SubnetIDs",
+        "ParameterValue": "subnet-0dc69d053d016efce, subnet-0602ccaea5280bfcf"
+    },
+    {
+        "ParameterKey": "Password",
+        "ParameterValue": "P@$$Word123"
+    },
+    {
+        "ParameterKey": "ImageId",
+        "ParameterValue": "ami-0be29bafdaad782db"
+    },
+    {
+        "ParameterKey": "Linux",
+        "ParameterValue": "ami-0b5eea76982371e91"
+    },
+    {
+        "ParameterKey": "RouteTable",
+        "ParameterValue": "rtb-08ff82d98c1e0734b"
+    }
+]
