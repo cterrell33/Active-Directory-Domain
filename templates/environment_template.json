@@ -1,11 +1,11 @@
 [
     {
       "ParameterKey": "VpcId",
-      "ParameterValue": "vpc-00dcd60991ea94f9f"
+      "ParameterValue": "VPC_ID"
     },
     {
         "ParameterKey": "SubnetIDs",
-        "ParameterValue": "subnet-02a5ac499efeb80da, subnet-0bbddf74ac6f94b5a"
+        "ParameterValue": "SUBNET_A, SUBNET_B"
     },
     {
         "ParameterKey": "Password",
@@ -16,11 +16,7 @@
         "ParameterValue": "ami-0be29bafdaad782db"
     },
     {
-        "ParameterKey": "Linux",
-        "ParameterValue": "ami-0b5eea76982371e91"
-    },
-    {
         "ParameterKey": "RouteTable",
-        "ParameterValue": "rtb-0ccae59cfb6da83f9"
+        "ParameterValue": "ROUTE_TABLE"
     }
 ]
