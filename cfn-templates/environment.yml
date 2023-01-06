@@ -46,7 +46,7 @@ Resources:
       Name: test1
       SecretString: password1 
 
-  EC2Instance1:
+  WindowsEC2Instance:
     Type: 'AWS::EC2::Instance'
     Properties:
       KeyName: "lab"
@@ -73,7 +73,7 @@ Resources:
             Add-ADGroupMember -Identity "Domain Admins" -Members test2
             </powershell>
 
-  EC2Instance2:
+  LinuxEC2Instance:
     Type: 'AWS::EC2::Instance'
     Properties:
       KeyName: "lab"
