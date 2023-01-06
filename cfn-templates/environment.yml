@@ -44,7 +44,7 @@ Resources:
     Type: 'AWS::SecretsManager::Secret'
     Properties:
       Name: test1
-      SecretString: password1 
+      SecretString: password1!
 
   WindowsEC2Instance:
     Type: 'AWS::EC2::Instance'
@@ -71,6 +71,7 @@ Resources:
             New-ADUser -Name $u -AccountPassword $accountpassword -SamAccountName $u -UserPrincipalName $u@lab.example.com -Enabled $true
             Add-ADGroupMember -Identity "Domain Admins" -Members $u
             }
+            Enable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol -All
             </powershell>
             <persist>true</persist>
 
