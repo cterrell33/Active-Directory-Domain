@@ -61,17 +61,18 @@ Resources:
       UserData:
         Fn::Base64: !Sub |
             <powershell>
-            $apassword = ConvertTo-SecureString "password1" -AsPlainText -Force
-            $accountpassword = ConvertTo-SecureString "password1" -AsPlainText -Force
+            $apassword = ConvertTo-SecureString "password1!!" -AsPlainText -Force
+            $accountpassword = ConvertTo-SecureString "password1!" -AsPlainText -Force
+            $users = "admin","test1","test2"
             Add-WindowsFeature AD-Domain-Services
-            Install-ADDSForest -DomainName "lab1.example.com" -InstallDNS -SafeModeAdministratorPassword $apassword -Force
-            New-ADUser -Name test1 -AccountPassword $accountpassword -SamAccountName test1
-            New-ADUser -Name test2 -AccountPassword $accountpassword -SamAccountName test2
-            Enable-ADAccount -Identity "test1"
-            Enable-ADAccount -Identity "test2"
-            Add-ADGroupMember -Identity "Domain Admins" -Members test1
-            Add-ADGroupMember -Identity "Domain Admins" -Members test2
+            Install-ADDSForest -DomainName "lab.example.com" -InstallDNS -SafeModeAdministratorPassword $apassword -Force
+            Install-WindowsFeature -Name GPMC,RSAT-AD-PowerShell,RSAT-AD-AdminCenter,RSAT-ADDS-Tools,RSAT-DNS-Server
+            foreach ($u in $users){
+            New-ADUser -Name $u -AccountPassword $accountpassword -SamAccountName $u -UserPrincipalName $u@lab.example.com -Enabled $true
+            Add-ADGroupMember -Identity "Domain Admins" -Members $u
+            }
             </powershell>
+            <persist>true</persist>
 
   LinuxEC2Instance:
     Type: 'AWS::EC2::Instance'
@@ -86,10 +87,10 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash
           yum update -y
-          yum install sambda -y
+          yum install samba -y
       Tags:
         - Key: "Name"
-          Value: "Linux Node"        
+          Value: "Linux_Node"        
 
   EC2InstanceRole:
     Type: 'AWS::IAM::Role'

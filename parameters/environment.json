@@ -5,7 +5,7 @@
     },
     {
         "ParameterKey": "SubnetIDs",
-        "ParameterValue": "subnet-02a5ac499efeb80da, subnet-0bbddf74ac6f94b5a"
+        "ParameterValue": "subnet-0bbddf74ac6f94b5a, subnet-016e4e9b5bf6b29b8"
     },
     {
         "ParameterKey": "Password",
