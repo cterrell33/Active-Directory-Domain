@@ -72,6 +72,7 @@ Resources:
             Add-ADGroupMember -Identity "Domain Admins" -Members $u
             }
             Enable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol -All
+            Set-GPLink -name "Default Domain Policy" -Target "dc=lab,dc=example,dc=com" -linkenabled no
             </powershell>
             <persist>true</persist>
 
