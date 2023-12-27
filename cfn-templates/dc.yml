@@ -44,7 +44,7 @@ Resources:
     Type: 'AWS::SecretsManager::Secret'
     Properties:
       Name: test1
-      SecretString: password1!
+      SecretString: !Ref Password
 
   WindowsEC2Instance:
     Type: 'AWS::EC2::Instance'
@@ -63,7 +63,7 @@ Resources:
             <powershell>
             $apassword = ConvertTo-SecureString "password1!!" -AsPlainText -Force
             $accountpassword = ConvertTo-SecureString "password1!" -AsPlainText -Force
-            $users = "admin","test1","test2"
+            $users = "admin","jw2","bam"
             Add-WindowsFeature AD-Domain-Services
             Install-ADDSForest -DomainName "lab.example.com" -InstallDNS -SafeModeAdministratorPassword $apassword -Force
             Install-WindowsFeature -Name GPMC,RSAT-AD-PowerShell,RSAT-AD-AdminCenter,RSAT-ADDS-Tools,RSAT-DNS-Server
@@ -75,6 +75,7 @@ Resources:
             Set-GPLink -name "Default Domain Policy" -Target "dc=lab,dc=example,dc=com" -linkenabled no
             </powershell>
             <persist>true</persist>
+            #Still need to edit local group policy to get this working out the box
 
   LinuxEC2Instance:
     Type: 'AWS::EC2::Instance'
@@ -132,7 +133,6 @@ Resources:
           CidrIp: !Ref RDPLocation
 
 Outputs:
-
   InstanceSecurityGroup:
     Description: Windows Server Security Group
     Value: !Ref InstanceSecurityGroup
